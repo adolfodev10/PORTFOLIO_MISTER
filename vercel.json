@@ -3,9 +3,37 @@
     {
       "src": "*.html",
       "use": "@vercel/static"
+    },
+    {
+      "src": "JS/*.js",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "Style/*.css",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "images/**/*",
+      "use": "@vercel/static"
     }
   ],
   "routes": [
+    {
+      "src": "/(.*)\\.(js|css|png|jpg|jpeg|gif|svg|ico|pdf)",
+      "dest": "/$1.$2"
+    },
+    {
+      "src": "/JS/(.*)",
+      "dest": "/JS/$1"
+    },
+    {
+      "src": "/Style/(.*)",
+      "dest": "/Style/$1"
+    },
+    {
+      "src": "/images/(.*)",
+      "dest": "/images/$1"
+    },
     {
       "src": "/(.*)",
       "dest": "/index.html"
