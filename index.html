@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfólio de Adolfo Monteiro - Desenvolvedor de Software especializado em engenharia de software, web e mobile">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="Style/styles.css">
+    <link rel="shortcut icon" href="images/logo.png" type="image/x-icon">
+    <title>Adolfo Monteiro | Desenvolvedor de Software</title>
+</head>
+
+<body>
+    <!-- Loader -->
+    <div class="loader">
+        <div class="loader__spinner"></div>
+    </div>
+
+    <!-- Cursor personalizado -->
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+
+    <!-- Header -->
+    <header class="header">
+        <a href="#" class="logo">Adolfo <span>Monteiro</span></a>
+        <i class="fa-solid fa-bars" id="menu-icon"></i>
+        <nav class="navbar">
+            <a href="#home" class="active">Início</a>
+            <a href="#about">Sobre</a>
+            <a href="#services">Serviços</a>
+            <a href="#portfolio">Certificações</a>
+            <a href="#contact">Contacto</a>
+        </nav>
+    </header>
+
+    <!-- Home Section -->
+    <section class="home" id="home">
+        <div class="home-content">
+            <div class="home-badge">
+                <span class="badge">Bem-vindo ao meu portfólio</span>
+            </div>
+            
+            <h1 class="glitch" data-text="Olá, sou o Adolfo">Olá, sou o Adolfo</h1>
+            
+            <div class="typed-container">
+                <span class="text-gradient">Desenvolvedor</span>
+                <span class="typed-text"></span>
+            </div>
+            
+            <p class="highlight-text">
+                Engenheiro de Software com paixão por criar soluções inovadoras e experiências digitais extraordinárias.
+                Especialista em arquitetura de software, desenvolvimento web/mobile e otimização de sistemas.
+            </p>
+
+            <div class="stats-container">
+                <div class="stat-item">
+                    <span class="stat-number" data-target="5+">0+</span>
+                    <span class="stat-label">Anos Experiência</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-target="50+">0+</span>
+                    <span class="stat-label">Projetos</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number" data-target="20+">0+</span>
+                    <span class="stat-label">Clientes</span>
+                </div>
+            </div>
+
+            <div class="social-media">
+                <a href="https://www.facebook.com/adolfo.MisterAL/" target="_blank" class="social-icon">
+                    <i class="fa-brands fa-facebook-f"></i>
+                </a>
+                <a href="https://www.instagram.com/adolfomonteiromanuel10/" target="_blank" class="social-icon">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/adolfo-manuel-965746334/" target="_blank" class="social-icon">
+                    <i class="fa-brands fa-linkedin-in"></i>
+                </a>
+                <a href="https://github.com/adolfodev10" target="_blank" class="social-icon">
+                    <i class="fa-brands fa-github"></i>
+                </a>
+            </div>
+
+            <div class="cta-group">
+                <a id="Download" onclick="Download()" class="btn btn-primary">
+                    <i class="fa-regular fa-file-pdf"></i>
+                    Baixar CV
+                </a>
+                <a href="#contact" class="btn btn-outline">
+                    <i class="fa-regular fa-envelope"></i>
+                    Entrar em Contacto
+                </a>
+            </div>
+        </div>
+
+        <div class="home-img">
+            <div class="img-wrapper">
+                <img src="images/68778.png" alt="Adolfo Monteiro">
+                <div class="tech-icons">
+                    <i class="fa-brands fa-react"></i>
+                    <i class="fa-brands fa-node"></i>
+                    <i class="fa-brands fa-python"></i>
+                    <i class="fa-brands fa-js"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="about-img">
+            <div class="img-wrapper">
+                <img src="images/68778.png" alt="Adolfo Monteiro">
+                <div class="experience-badge">
+                    <span class="years">5+</span>
+                    <span class="text">Anos de Experiência</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="about-content">
+            <h2 class="section-title">Sobre <span>Mim</span></h2>
+            <h3 class="gradient-text">Engenheiro de Software & Inovador</h3>
+            
+            <p>
+                Sou Desenvolvedor de Software com experiência em engenharia de software, web e mobile, atuando em
+                projetos de impacto e inovação. Tenho paixão por resolver problemas complexos, otimizar sistemas e 
+                criar experiências digitais de alto nível.
+            </p>
+
+            <p>
+                Atualmente trabalho como Engenheiro de Software na Community Code, liderando o desenvolvimento de
+                aplicações inovadoras. Passei também por experiências na CFP Mundo da Tecnologia e na Incubadora do IPIL,
+                onde contribuí para a construção de plataformas web escaláveis e responsivas.
+            </p>
+
+            <div class="skills">
+                <span class="skill-tag">React</span>
+                <span class="skill-tag">Node.js</span>
+                <span class="skill-tag">TypeScript</span>
+                <span class="skill-tag">Python</span>
+                <span class="skill-tag">DevOps</span>
+                <span class="skill-tag">UI/UX</span>
+            </div>
+
+            <a href="#" class="btn btn-primary">Ler Mais</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <h2 class="section-title">Meus <span>Serviços</span> & Tecnologias</h2>
+        
+        <div class="services-container">
+            <!-- Web Development -->
+            <div class="service-card">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <div class="icon-wrapper">
+                            <i class="fa-solid fa-code"></i>
+                        </div>
+                        <h3>Desenvolvimento Web</h3>
+                        <p>Aplicações web modernas, responsivas e de alta performance com as melhores tecnologias do mercado</p>
+                    </div>
+                    <div class="card-back">
+                        <h4>Tecnologias</h4>
+                        <div class="tech-stack">
+                            <i class="fa-brands fa-react" title="React"></i>
+                            <i class="fa-brands fa-node" title="Node.js"></i>
+                            <i class="fa-brands fa-js" title="JavaScript"></i>
+                            <i class="fa-brands fa-html5" title="HTML5"></i>
+                            <i class="fa-brands fa-css3-alt" title="CSS3"></i>
+                            <i class="fa-brands fa-bootstrap" title="Bootstrap"></i>
+                        </div>
+                        <a href="#" class="btn btn-small">Ver Projetos</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- UI/UX Design -->
+            <div class="service-card">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <div class="icon-wrapper">
+                            <i class="fa-solid fa-palette"></i>
+                        </div>
+                        <h3>UI/UX Design</h3>
+                        <p>Designs intuitivos e experiências memoráveis que encantam usuários e impulsionam resultados</p>
+                    </div>
+                    <div class="card-back">
+                        <h4>Ferramentas</h4>
+                        <div class="tech-stack">
+                            <i class="fa-brands fa-figma" title="Figma"></i>
+                            <i class="fa-brands fa-adobe" title="Adobe XD"></i>
+                            <i class="fa-solid fa-pen" title="Wireframing"></i>
+                        </div>
+                        <a href="#" class="btn btn-small">Ver Projetos</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile Development -->
+            <div class="service-card">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <div class="icon-wrapper">
+                            <i class="fa-brands fa-android"></i>
+                        </div>
+                        <h3>Mobile Development</h3>
+                        <p>Aplicativos nativos e híbridos para iOS e Android com performance excepcional</p>
+                    </div>
+                    <div class="card-back">
+                        <h4>Tecnologias</h4>
+                        <div class="tech-stack">
+                            <i class="fa-brands fa-react" title="React Native"></i>
+                            <i class="fa-brands fa-apple" title="iOS"></i>
+                            <i class="fa-brands fa-android" title="Android"></i>
+                            <i class="fa-brands fa-flutter" title="Flutter"></i>
+                        </div>
+                        <a href="#" class="btn btn-small">Ver Projetos</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="portfolio" id="portfolio">
+        <h2 class="section-title">Minhas <span>Certificações</span></h2>
+
+        <div class="portfolio-container">
+            <!-- Certification 1 -->
+            <div class="portfolio-item">
+                <div class="portfolio-image">
+                    <img src="images/code2.png" alt="React Native Certification">
+                    <div class="overlay">
+                        <h4>React Native Expert</h4>
+                        <p>Desenvolvimento de apps mobile cross-platform com performance nativa</p>
+                        <div class="cert-meta">
+                            <span><i class="fa-regular fa-calendar"></i> 2024</span>
+                            <span><i class="fa-regular fa-building"></i> Meta</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Certification 2 -->
+            <div class="portfolio-item">
+                <div class="portfolio-image">
+                    <img src="images/code5.png" alt="React JS Certification">
+                    <div class="overlay">
+                        <h4>React JS Advanced</h4>
+                        <p>Arquitetura de componentes e otimização de performance</p>
+                        <div class="cert-meta">
+                            <span><i class="fa-regular fa-calendar"></i> 2024</span>
+                            <span><i class="fa-regular fa-building"></i> Meta</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Certification 3 -->
+            <div class="portfolio-item">
+                <div class="portfolio-image">
+                    <img src="images/code6.png" alt="TypeScript Certification">
+                    <div class="overlay">
+                        <h4>TypeScript Master</h4>
+                        <p>Type-safe development e patterns avançados</p>
+                        <div class="cert-meta">
+                            <span><i class="fa-regular fa-calendar"></i> 2023</span>
+                            <span><i class="fa-regular fa-building"></i> Microsoft</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Certification 4 -->
+            <div class="portfolio-item">
+                <div class="portfolio-image">
+                    <img src="images/code4.png" alt="Expo Framework">
+                    <div class="overlay">
+                        <h4>Expo Framework</h4>
+                        <p>Desenvolvimento ágil de apps React Native com Expo</p>
+                        <div class="cert-meta">
+                            <span><i class="fa-regular fa-calendar"></i> 2023</span>
+                            <span><i class="fa-regular fa-building"></i> Expo</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Certification 5 -->
+            <div class="portfolio-item">
+                <div class="portfolio-image">
+                    <img src="images/code4.png" alt="TailwindCSS">
+                    <div class="overlay">
+                        <h4>TailwindCSS Expert</h4>
+                        <p>Design systems e interfaces modernas com utility-first CSS</p>
+                        <div class="cert-meta">
+                            <span><i class="fa-regular fa-calendar"></i> 2023</span>
+                            <span><i class="fa-regular fa-building"></i> Tailwind Labs</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Certification 6 -->
+            <div class="portfolio-item">
+                <div class="portfolio-image">
+                    <img src="images/code4.png" alt="Node.js API">
+                    <div class="overlay">
+                        <h4>Node.js API Expert</h4>
+                        <p>APIs RESTful escaláveis e microserviços com Node.js</p>
+                        <div class="cert-meta">
+                            <span><i class="fa-regular fa-calendar"></i> 2024</span>
+                            <span><i class="fa-regular fa-building"></i> Node.js Foundation</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <h2 class="section-title">Entre em <span>Contacto</span></h2>
+
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>Vamos conversar!</h3>
+                <p>Tem um projeto em mente? Entre em contacto e vamos transformar suas ideias em realidade.</p>
+                
+                <div class="info-items">
+                    <div class="info-item">
+                        <i class="fa-regular fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <a href="mailto:adolfomonteiromanuel@gmail.com">adolfo@example.com</a>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <i class="fa-regular fa-phone"></i>
+                        <div>
+                            <h4>Telefone</h4>
+                            <a href="tel:+244928549260">+244 928 549 260</a>
+                        </div>
+                    </div>
+                    
+                    <div class="info-item">
+                        <i class="fa-regular fa-location-dot"></i>
+                        <div>
+                            <h4>Localização</h4>
+                            <p>Luanda, Angola</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <form action="#" class="contact-form">
+                <div class="form-group">
+                    <input type="text" placeholder="Nome Completo" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" placeholder="Email" required>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <input type="tel" placeholder="Telefone">
+                    </div>
+                    <div class="form-group">
+                        <input type="text" placeholder="Assunto">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <textarea placeholder="Sua Mensagem" rows="6" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary btn-full">
+                    <i class="fa-regular fa-paper-plane"></i>
+                    Enviar Mensagem
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <a href="#" class="logo">Adolfo <span>Monteiro</span></a>
+                <p>Transformando ideias em código e criando experiências digitais extraordinárias.</p>
+            </div>
+            
+            <div class="footer-links">
+                <h4>Links Rápidos</h4>
+                <ul>
+                    <li><a href="#home">Início</a></li>
+                    <li><a href="#about">Sobre</a></li>
+                    <li><a href="#services">Serviços</a></li>
+                    <li><a href="#portfolio">Certificações</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-social">
+                <h4>Redes Sociais</h4>
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fa-brands fa-github"></i></a>
+                    <a href="#" class="social-link"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="#" class="social-link"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="social-link"><i class="fa-brands fa-facebook-f"></i></a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2024 Adolfo Monteiro. Todos os direitos reservados.</p>
+            <a href="#home" class="back-to-top">
+                <i class="fa-solid fa-arrow-up"></i>
+            </a>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="JS/main.js"></script>
+</body>
+</html>
