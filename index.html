@@ -4,11 +4,1464 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Portfólio de Adolfo Monteiro - Desenvolvedor de Software especializado em engenharia de software, web e mobile">
+    <meta name="description"
+        content="Portfólio de Adolfo Monteiro - Desenvolvedor de Software especializado em engenharia de software, web e mobile">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <link rel="stylesheet" href="Style/styles.css">
-    <link rel="shortcut icon" href="images/logo.png" type="image/x-icon">
+    <link rel="shortcut icon"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%236366f1'/%3E%3Ctext x='50' y='68' font-size='50' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'%3EA%3C/text%3E%3C/svg%3E"
+        type="image/x-icon">
     <title>Adolfo Monteiro | Desenvolvedor de Software</title>
+
+    <style>
+        /* Variáveis e Reset */
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+        :root {
+            --primary-color: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary-color: #8b5cf6;
+            --accent-color: #ec4899;
+            --text-color: #1f2937;
+            --text-light: #6b7280;
+            --bg-color: #ffffff;
+            --bg-dark: #f9fafb;
+            --bg-darker: #f3f4f6;
+            --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            --gradient-primary: linear-gradient(135deg, #6366f1, #8b5cf6);
+            --gradient-accent: linear-gradient(135deg, #8b5cf6, #ec4899);
+            --github-green: #2da44e;
+            --github-purple: #8250df;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-decoration: none;
+            border: none;
+            outline: none;
+        }
+
+        html {
+            font-size: 62.5%;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            color: var(--text-color);
+            background: var(--bg-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+            cursor: none;
+        }
+
+        /* Tema Escuro */
+        body.dark-theme {
+            --primary-color: #818cf8;
+            --primary-dark: #6366f1;
+            --secondary-color: #c084fc;
+            --accent-color: #f472b6;
+            --text-color: #f3f4f6;
+            --text-light: #9ca3af;
+            --bg-color: #111827;
+            --bg-dark: #1f2937;
+            --bg-darker: #374151;
+            --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+            --shadow-md: 0 10px 15px -3px rgba(0, 0, 0, 0.4);
+            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
+            --shadow-xl: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+        }
+
+        body.dark-theme .header {
+            background: rgba(17, 24, 39, 0.8);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        body.dark-theme .navbar a {
+            color: var(--text-color);
+        }
+
+        body.dark-theme .service-card .card-front {
+            background: var(--bg-dark);
+        }
+
+        body.dark-theme .contact-form,
+        body.dark-theme .contact-info,
+        body.dark-theme .portfolio-item,
+        body.dark-theme .skill-tag,
+        body.dark-theme .github-card {
+            background: var(--bg-dark);
+        }
+
+        body.dark-theme .form-group input,
+        body.dark-theme .form-group textarea {
+            background: var(--bg-darker);
+            color: var(--text-color);
+        }
+
+        /* Loader */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--bg-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s, visibility 0.5s;
+        }
+
+        .loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader__spinner {
+            width: 50px;
+            height: 50px;
+            border: 3px solid var(--bg-darker);
+            border-top-color: var(--primary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Cursor Personalizado */
+        .cursor {
+            width: 8px;
+            height: 8px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.1s;
+        }
+
+        .cursor-follower {
+            width: 40px;
+            height: 40px;
+            border: 2px solid var(--primary-color);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9998;
+            transition: transform 0.3s, width 0.3s, height 0.3s;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 2rem 9%;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            transition: all 0.3s;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .header.scrolled {
+            padding: 1.5rem 9%;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .logo {
+            font-size: 2.4rem;
+            font-weight: 700;
+            color: var(--text-color);
+        }
+
+        .logo span {
+            background: var(--gradient-primary);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .navbar {
+            display: flex;
+            gap: 4rem;
+        }
+
+        .navbar a {
+            font-size: 1.6rem;
+            font-weight: 500;
+            color: var(--text-color);
+            transition: 0.3s;
+            position: relative;
+        }
+
+        .navbar a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-primary);
+            transition: width 0.3s;
+        }
+
+        .navbar a:hover::after,
+        .navbar a.active::after {
+            width: 100%;
+        }
+
+        #menu-icon {
+            font-size: 3rem;
+            color: var(--text-color);
+            display: none;
+            cursor: pointer;
+        }
+
+        /* Home Section */
+        .home {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 0 9%;
+            gap: 5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .home::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 80%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .home-content {
+            flex: 1;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.8rem 1.6rem;
+            background: rgba(99, 102, 241, 0.1);
+            border-radius: 100px;
+            font-size: 1.4rem;
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.6s;
+        }
+
+        .glitch {
+            font-size: 6rem;
+            font-weight: 700;
+            line-height: 1.5;
+            margin-top: 5rem;
+            margin-bottom: 1rem;
+            position: relative;
+            color: var(--text-color);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .typed-container {
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .text-gradient {
+            background: var(--gradient-primary);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 600;
+        }
+
+        .typed-text {
+            color: var(--text-color);
+            font-weight: 500;
+        }
+
+        .highlight-text {
+            font-size: 1.8rem;
+            color: var(--text-light);
+            margin-bottom: 3rem;
+            max-width: 600px;
+        }
+
+        .stats-container {
+            display: flex;
+            gap: 4rem;
+            margin-bottom: 3rem;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 1.4rem;
+            color: var(--text-light);
+        }
+
+        .social-media {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .social-icon {
+            width: 4.5rem;
+            height: 4.5rem;
+            border-radius: 50%;
+            background: var(--bg-darker);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--text-color);
+            transition: 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-icon::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-primary);
+            opacity: 0;
+            transition: 0.3s;
+            z-index: 1;
+        }
+
+        .social-icon i {
+            position: relative;
+            z-index: 2;
+        }
+
+        .social-icon:hover {
+            transform: translateY(-3px);
+        }
+
+        .social-icon:hover::before {
+            opacity: 1;
+        }
+
+        .social-icon:hover i {
+            color: white;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .btn {
+            padding: 1.2rem 3rem;
+            border-radius: 100px;
+            font-size: 1.6rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: white;
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-outline {
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            background: transparent;
+        }
+
+        .btn-outline:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .home-img {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .img-wrapper {
+            position: relative;
+            width: 400px;
+            height: 400px;
+        }
+
+        .img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            animation: morph 8s ease-in-out infinite;
+            box-shadow: var(--shadow-xl);
+        }
+
+        @keyframes morph {
+
+            0%,
+            100% {
+                border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            }
+
+            25% {
+                border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%;
+            }
+
+            50% {
+                border-radius: 70% 30% 30% 70% / 70% 70% 30% 30%;
+            }
+
+            75% {
+                border-radius: 40% 60% 60% 40% / 60% 40% 60% 40%;
+            }
+        }
+
+        .tech-icons {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .tech-icons i {
+            position: absolute;
+            font-size: 3rem;
+            color: var(--primary-color);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .tech-icons i:nth-child(1) {
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .tech-icons i:nth-child(2) {
+            top: 20%;
+            right: 10%;
+            animation-delay: 0.5s;
+        }
+
+        .tech-icons i:nth-child(3) {
+            bottom: 20%;
+            left: 15%;
+            animation-delay: 1s;
+        }
+
+        .tech-icons i:nth-child(4) {
+            bottom: 10%;
+            right: 15%;
+            animation-delay: 1.5s;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        /* About Section */
+        .about {
+            padding: 10rem 9%;
+            background: var(--bg-dark);
+            display: flex;
+            align-items: center;
+            gap: 5rem;
+        }
+
+        .about-img {
+            flex: 1;
+        }
+
+        .about-img .img-wrapper {
+            width: 350px;
+            height: 350px;
+            position: relative;
+        }
+
+        .experience-badge {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background: var(--gradient-primary);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        .experience-badge .years {
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        .experience-badge .text {
+            font-size: 1rem;
+        }
+
+        .about-content {
+            flex: 1;
+        }
+
+        .section-title {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+        }
+
+        .section-title span {
+            background: var(--gradient-primary);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-subtitle {
+            font-size: 1.6rem;
+            color: var(--text-light);
+            margin-bottom: 4rem;
+            text-align: center;
+        }
+
+        .gradient-text {
+            font-size: 2.4rem;
+            background: var(--gradient-primary);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 2rem;
+        }
+
+        .about-content p {
+            font-size: 1.6rem;
+            color: var(--text-light);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 3rem 0;
+        }
+
+        .skill-tag {
+            padding: 0.8rem 1.6rem;
+            background: white;
+            border-radius: 100px;
+            font-size: 1.4rem;
+            color: var(--text-color);
+            box-shadow: var(--shadow-sm);
+            transition: 0.3s;
+        }
+
+        .skill-tag:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* GitHub Stats Section */
+        .github-stats {
+            padding: 10rem 9%;
+            background: var(--bg-color);
+        }
+
+        .github-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+            margin-top: 5rem;
+        }
+
+        .github-card {
+            background: var(--bg-dark);
+            padding: 3rem;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.4s;
+            box-shadow: var(--shadow-md);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .github-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient-primary);
+            transform: scaleX(0);
+            transition: transform 0.4s;
+        }
+
+        .github-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .github-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .github-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+        }
+
+        .github-icon i {
+            font-size: 3rem;
+            color: white;
+        }
+
+        .github-number {
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .github-label {
+            font-size: 1.6rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+
+        .github-trend {
+            font-size: 1.2rem;
+            padding: 0.5rem 1rem;
+            border-radius: 100px;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .github-trend.positive {
+            background: rgba(45, 164, 78, 0.1);
+            color: var(--github-green);
+        }
+
+        .github-stars {
+            font-size: 1.4rem;
+            color: var(--text-light);
+            margin-top: 1rem;
+        }
+
+        .github-stars i {
+            color: #f1c40f;
+        }
+
+        .github-languages {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .lang-tag {
+            padding: 0.4rem 1rem;
+            background: rgba(99, 102, 241, 0.1);
+            border-radius: 100px;
+            font-size: 1.2rem;
+            color: var(--primary-color);
+        }
+
+        .github-activity {
+            margin-top: 5rem;
+            background: var(--bg-dark);
+            border-radius: 20px;
+            padding: 3rem;
+            text-align: center;
+        }
+
+        .github-activity h3 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .activity-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .activity-item {
+            text-align: center;
+        }
+
+        .activity-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        /* Services Section */
+        .services {
+            padding: 10rem 9%;
+            background: var(--bg-dark);
+        }
+
+        .services-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 5rem;
+        }
+
+        .service-card {
+            perspective: 1500px;
+            height: 400px;
+        }
+
+        .card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+        }
+
+        .service-card:hover .card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .card-front,
+        .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 20px;
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .card-front {
+            background: white;
+        }
+
+        .card-back {
+            background: var(--gradient-primary);
+            color: white;
+            transform: rotateY(180deg);
+        }
+
+        .icon-wrapper {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: var(--gradient-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+        .icon-wrapper i {
+            font-size: 3.5rem;
+            color: white;
+        }
+
+        .service-card h3 {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-card p {
+            font-size: 1.4rem;
+            color: var(--text-light);
+        }
+
+        .card-back h4 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .tech-stack {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+        .tech-stack i {
+            font-size: 3rem;
+            color: white;
+            transition: 0.3s;
+        }
+
+        .tech-stack i:hover {
+            transform: scale(1.2);
+        }
+
+        .btn-small {
+            padding: 0.8rem 2rem;
+            background: white;
+            color: var(--primary-color);
+            border-radius: 100px;
+            font-size: 1.4rem;
+            margin-top: 2rem;
+        }
+
+        /* Portfolio Section */
+        .portfolio {
+            padding: 10rem 9%;
+            background: var(--bg-color);
+        }
+
+        .portfolio-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 5rem;
+        }
+
+        .portfolio-item {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-md);
+        }
+
+        .portfolio-image {
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 4/3;
+        }
+
+        .portfolio-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.5s;
+        }
+
+        .portfolio-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(99, 102, 241, 0.9), rgba(139, 92, 246, 0.9));
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            text-align: center;
+            color: white;
+            opacity: 0;
+            transition: 0.5s;
+        }
+
+        .portfolio-item:hover .overlay {
+            opacity: 1;
+        }
+
+        .overlay h4 {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            transform: translateY(20px);
+            transition: 0.5s;
+        }
+
+        .overlay p {
+            font-size: 1.4rem;
+            margin-bottom: 2rem;
+            transform: translateY(20px);
+            transition: 0.5s 0.1s;
+        }
+
+        .cert-meta {
+            display: flex;
+            gap: 2rem;
+            transform: translateY(20px);
+            transition: 0.5s 0.2s;
+        }
+
+        .cert-meta span {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .portfolio-item:hover .overlay h4,
+        .portfolio-item:hover .overlay p,
+        .portfolio-item:hover .cert-meta {
+            transform: translateY(0);
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 10rem 9%;
+            background: var(--bg-dark);
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 5rem;
+            margin-top: 5rem;
+        }
+
+        .contact-info {
+            background: white;
+            padding: 4rem;
+            border-radius: 30px;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .contact-info h3 {
+            font-size: 2.8rem;
+            margin-bottom: 2rem;
+        }
+
+        .contact-info>p {
+            font-size: 1.6rem;
+            color: var(--text-light);
+            margin-bottom: 3rem;
+        }
+
+        .info-items {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .info-item i {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--bg-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--primary-color);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .info-item h4 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .info-item a,
+        .info-item p {
+            font-size: 1.4rem;
+            color: var(--text-light);
+            transition: 0.3s;
+        }
+
+        .info-item a:hover {
+            color: var(--primary-color);
+        }
+
+        .contact-form {
+            background: white;
+            padding: 4rem;
+            border-radius: 30px;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .form-group {
+            margin-bottom: 2rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1.5rem;
+            background: var(--bg-dark);
+            border-radius: 12px;
+            font-size: 1.6rem;
+            font-family: inherit;
+            transition: 0.3s;
+            border: 1px solid transparent;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+        }
+
+        .btn-full {
+            width: 100%;
+            justify-content: center;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--bg-dark);
+            padding: 5rem 9% 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 5rem;
+            margin-bottom: 4rem;
+        }
+
+        .footer-brand .logo {
+            font-size: 2.4rem;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+        }
+
+        .footer-brand p {
+            font-size: 1.4rem;
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+
+        .footer-links h4,
+        .footer-social h4 {
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a {
+            font-size: 1.4rem;
+            color: var(--text-light);
+            transition: 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-color);
+            padding-left: 5px;
+        }
+
+        .footer-social .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .footer-social .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            transition: 0.3s;
+        }
+
+        .footer-social .social-link:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            padding-top: 2rem;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-bottom p {
+            font-size: 1.4rem;
+            color: var(--text-light);
+        }
+
+        .back-to-top {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--gradient-primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            transition: 0.3s;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* Theme Toggle */
+        .theme-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--gradient-primary);
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            z-index: 99;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.3s;
+            box-shadow: var(--shadow-md);
+            border: none;
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            html {
+                font-size: 55%;
+            }
+        }
+
+        @media (max-width: 991px) {
+            .header {
+                padding: 2rem 4%;
+            }
+
+            section {
+                padding: 8rem 4%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            #menu-icon {
+                display: block;
+            }
+
+            .navbar {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--bg-color);
+                padding: 2rem;
+                box-shadow: var(--shadow-md);
+                display: none;
+            }
+
+            .navbar.active {
+                display: flex;
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .home {
+                flex-direction: column-reverse;
+                text-align: center;
+            }
+
+            .glitch {
+                font-size: 4rem;
+            }
+
+            .stats-container {
+                justify-content: center;
+            }
+
+            .social-media {
+                justify-content: center;
+            }
+
+            .cta-group {
+                justify-content: center;
+            }
+
+            .about {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .footer-social .social-links {
+                justify-content: center;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .github-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 450px) {
+            html {
+                font-size: 50%;
+            }
+        }
+
+        .org-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 0.5rem 1rem;
+            background: var(--bg-dark);
+            border-radius: 100px;
+            text-decoration: none;
+            color: var(--text-color);
+            transition: 0.3s;
+        }
+
+        .org-badge:hover {
+            transform: translateY(-2px);
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .org-badge img {
+            border-radius: 50%;
+        }
+
+        /* Toast Notification */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            min-width: 320px;
+            max-width: 450px;
+            background: var(--bg-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow-xl);
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+            z-index: 10000;
+            transform: translateX(400px);
+            transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            border-left: 4px solid var(--primary-color);
+            backdrop-filter: blur(10px);
+        }
+
+        .toast.show {
+            transform: translateX(0);
+        }
+
+        .toast-icon {
+            flex-shrink: 0;
+            width: 40px;
+            height: 40px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.8rem;
+        }
+
+        .toast-content {
+            flex: 1;
+        }
+
+        .toast-content strong {
+            display: block;
+            font-size: 1.6rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+        }
+
+        .toast-content p {
+            font-size: 1.3rem;
+            color: var(--text-light);
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        .toast-close {
+            background: none;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--text-light);
+            padding: 0;
+            line-height: 1;
+            transition: 0.3s;
+        }
+
+        .toast-close:hover {
+            color: var(--primary-color);
+            transform: scale(1.1);
+        }
+
+        .toast.toast-success {
+            border-left-color: #2da44e;
+        }
+
+        .toast.toast-success .toast-icon {
+            background: #2da44e;
+        }
+
+        /* Responsive Toast */
+        @media (max-width: 768px) {
+            .toast {
+                left: 20px;
+                right: 20px;
+                bottom: 20px;
+                min-width: auto;
+                max-width: none;
+                transform: translateY(400px);
+            }
+
+            .toast.show {
+                transform: translateY(0);
+            }
+        }
+    </style>
 </head>
 
 <body>
@@ -28,6 +1481,7 @@
         <nav class="navbar">
             <a href="#home" class="active">Início</a>
             <a href="#about">Sobre</a>
+            <a href="#github">GitHub</a>
             <a href="#services">Serviços</a>
             <a href="#portfolio">Certificações</a>
             <a href="#contact">Contacto</a>
@@ -40,14 +1494,14 @@
             <div class="home-badge">
                 <span class="badge">Bem-vindo ao meu portfólio</span>
             </div>
-            
-            <h1 class="glitch" data-text="Olá, sou o Adolfo">Olá, sou o Adolfo</h1>
-            
+
+            <h1 class="glitch">Olá, sou o Adolfo</h1>
+
             <div class="typed-container">
                 <span class="text-gradient">Desenvolvedor</span>
                 <span class="typed-text"></span>
             </div>
-            
+
             <p class="highlight-text">
                 Engenheiro de Software com paixão por criar soluções inovadoras e experiências digitais extraordinárias.
                 Especialista em arquitetura de software, desenvolvimento web/mobile e otimização de sistemas.
@@ -55,15 +1509,15 @@
 
             <div class="stats-container">
                 <div class="stat-item">
-                    <span class="stat-number" data-target="5+">0+</span>
+                    <span class="stat-number" data-target="5">0</span>
                     <span class="stat-label">Anos Experiência</span>
                 </div>
                 <div class="stat-item">
-                    <span class="stat-number" data-target="50+">0+</span>
+                    <span class="stat-number" data-target="50">0</span>
                     <span class="stat-label">Projetos</span>
                 </div>
                 <div class="stat-item">
-                    <span class="stat-number" data-target="20+">0+</span>
+                    <span class="stat-number" data-target="20">0</span>
                     <span class="stat-label">Clientes</span>
                 </div>
             </div>
@@ -97,7 +1551,7 @@
 
         <div class="home-img">
             <div class="img-wrapper">
-                <img src="images/68778.png" alt="Adolfo Monteiro">
+                <img src="/images/68778.png" alt="Adolfo Monteiro">
                 <div class="tech-icons">
                     <i class="fa-brands fa-react"></i>
                     <i class="fa-brands fa-node"></i>
@@ -112,7 +1566,7 @@
     <section class="about" id="about">
         <div class="about-img">
             <div class="img-wrapper">
-                <img src="images/68778.png" alt="Adolfo Monteiro">
+                <img src="/images/68778.png" alt="Adolfo Monteiro">
                 <div class="experience-badge">
                     <span class="years">5+</span>
                     <span class="text">Anos de Experiência</span>
@@ -123,17 +1577,19 @@
         <div class="about-content">
             <h2 class="section-title">Sobre <span>Mim</span></h2>
             <h3 class="gradient-text">Engenheiro de Software & Inovador</h3>
-            
+
             <p>
                 Sou Desenvolvedor de Software com experiência em engenharia de software, web e mobile, atuando em
-                projetos de impacto e inovação. Tenho paixão por resolver problemas complexos, otimizar sistemas e 
+                projetos de impacto e inovação. Tenho paixão por resolver problemas complexos, otimizar sistemas e
                 criar experiências digitais de alto nível.
             </p>
 
             <p>
-                Atualmente trabalho como Engenheiro de Software na Community Code, liderando o desenvolvimento de
-                aplicações inovadoras. Passei também por experiências na CFP Mundo da Tecnologia e na Incubadora do IPIL,
-                onde contribuí para a construção de plataformas web escaláveis e responsivas.
+                Passei por experiências em startups de tecnologia, onde desenvolvi habilidades em arquitetura de
+                software,
+                desenvolvimento full-stack e liderança técnica.
+                Em cada projeto, busco entregar soluções escaláveis, para a construção de plataformas web escaláveis e
+                responsivas.
             </p>
 
             <div class="skills">
@@ -149,10 +1605,99 @@
         </div>
     </section>
 
+    <!-- GitHub Stats Section -->
+    <section class="github-stats" id="github">
+        <div class="container">
+            <h2 class="section-title">GitHub <span>Stats</span></h2>
+            <p class="section-subtitle">Meu ecossistema de desenvolvimento open-source</p>
+
+            <div class="github-grid">
+                <!-- Card 1: Total de Commits -->
+                <div class="github-card" data-aos="fade-up">
+                    <div class="github-icon">
+                        <i class="fa-solid fa-code-branch"></i>
+                    </div>
+                    <div class="github-number" id="total-commits">0</div>
+                    <div class="github-label">Total de Commits</div>
+                    <div class="github-trend positive" id="commits-trend">
+                        <i class="fa-solid fa-chart-line"></i> +45% este ano
+                    </div>
+                </div>
+
+                <!-- Card 2: Repositórios -->
+                <div class="github-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="github-icon">
+                        <i class="fa-solid fa-repository"></i>
+                    </div>
+                    <div class="github-number" id="total-repos">0</div>
+                    <div class="github-label">Repositórios Públicos</div>
+                    <div class="github-stars" id="total-forks">
+                        <i class="fa-solid fa-code-fork"></i> <span>0</span> forks
+                    </div>
+                </div>
+
+                <!-- Card 3: Estrelas -->
+                <div class="github-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="github-icon">
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <div class="github-number" id="total-stars">0</div>
+                    <div class="github-label">Total de Estrelas</div>
+                    <div class="github-trend positive" id="stars-trend">
+                        <i class="fa-solid fa-trophy"></i> Top 5% Global
+                    </div>
+                </div>
+
+                <!-- Card 4: Seguidores -->
+                <div class="github-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="github-icon">
+                        <i class="fa-solid fa-users"></i>
+                    </div>
+                    <div class="github-number" id="total-followers">0</div>
+                    <div class="github-label">Seguidores</div>
+                    <div class="github-stars" id="total-following">
+                        <i class="fa-solid fa-user-plus"></i> seguindo <span>0</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Linguagens Mais Usadas -->
+            <div class="github-activity">
+                <h3><i class="fa-solid fa-code"></i> Linguagens Mais Usadas</h3>
+                <div class="github-languages" id="top-languages">
+                    <span class="lang-tag">Carregando...</span>
+                </div>
+            </div>
+
+            <!-- Atividade Recente -->
+            <div class="github-activity">
+
+                <!-- Dentro da div github-activity, após activity-stats -->
+                <div id="extra-stats" class="activity-stats" style="margin-top: 2rem;"></div>
+                <div id="account-info"></div>
+                <h3><i class="fa-solid fa-clock"></i> Atividade Recente</h3>
+                <div class="activity-stats" id="recent-activity">
+                    <div class="activity-item">
+                        <div class="activity-number" id="total-contributions">0</div>
+                        <div>Contribuições (último ano)</div>
+                    </div>
+                    <div class="activity-item">
+                        <div class="activity-number" id="total-issues">0</div>
+                        <div>Issues Abertas</div>
+                    </div>
+                    <div class="activity-item">
+                        <div class="activity-number" id="total-prs">0</div>
+                        <div>Pull Requests</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Services Section -->
     <section class="services" id="services">
         <h2 class="section-title">Meus <span>Serviços</span> & Tecnologias</h2>
-        
+
         <div class="services-container">
             <!-- Web Development -->
             <div class="service-card">
@@ -162,7 +1707,8 @@
                             <i class="fa-solid fa-code"></i>
                         </div>
                         <h3>Desenvolvimento Web</h3>
-                        <p>Aplicações web modernas, responsivas e de alta performance com as melhores tecnologias do mercado</p>
+                        <p>Aplicações web modernas, responsivas e de alta performance com as melhores tecnologias do
+                            mercado</p>
                     </div>
                     <div class="card-back">
                         <h4>Tecnologias</h4>
@@ -187,7 +1733,8 @@
                             <i class="fa-solid fa-palette"></i>
                         </div>
                         <h3>UI/UX Design</h3>
-                        <p>Designs intuitivos e experiências memoráveis que encantam usuários e impulsionam resultados</p>
+                        <p>Designs intuitivos e experiências memoráveis que encantam usuários e impulsionam resultados
+                        </p>
                     </div>
                     <div class="card-back">
                         <h4>Ferramentas</h4>
@@ -234,7 +1781,7 @@
             <!-- Certification 1 -->
             <div class="portfolio-item">
                 <div class="portfolio-image">
-                    <img src="images/code2.png" alt="React Native Certification">
+                    <img src="/images/code2.png" alt="React Native Certification">
                     <div class="overlay">
                         <h4>React Native Expert</h4>
                         <p>Desenvolvimento de apps mobile cross-platform com performance nativa</p>
@@ -249,7 +1796,7 @@
             <!-- Certification 2 -->
             <div class="portfolio-item">
                 <div class="portfolio-image">
-                    <img src="images/code5.png" alt="React JS Certification">
+                    <img src="/images/code4.png" alt="React JS Certification">
                     <div class="overlay">
                         <h4>React JS Advanced</h4>
                         <p>Arquitetura de componentes e otimização de performance</p>
@@ -264,7 +1811,7 @@
             <!-- Certification 3 -->
             <div class="portfolio-item">
                 <div class="portfolio-image">
-                    <img src="images/code6.png" alt="TypeScript Certification">
+                    <img src="/images/code5.png" alt="TypeScript Certification">
                     <div class="overlay">
                         <h4>TypeScript Master</h4>
                         <p>Type-safe development e patterns avançados</p>
@@ -279,7 +1826,7 @@
             <!-- Certification 4 -->
             <div class="portfolio-item">
                 <div class="portfolio-image">
-                    <img src="images/code4.png" alt="Expo Framework">
+                    <img src="/images/code6.png" alt="Expo Framework">
                     <div class="overlay">
                         <h4>Expo Framework</h4>
                         <p>Desenvolvimento ágil de apps React Native com Expo</p>
@@ -294,7 +1841,7 @@
             <!-- Certification 5 -->
             <div class="portfolio-item">
                 <div class="portfolio-image">
-                    <img src="images/code2.png" alt="TailwindCSS">
+                    <img src="/images/code7.jpg" alt="TailwindCSS">
                     <div class="overlay">
                         <h4>TailwindCSS Expert</h4>
                         <p>Design systems e interfaces modernas com utility-first CSS</p>
@@ -309,7 +1856,7 @@
             <!-- Certification 6 -->
             <div class="portfolio-item">
                 <div class="portfolio-image">
-                    <img src="images/code7.jpg" alt="Node.js API">
+                    <img src="/images/code2.png" alt="Node.js API">
                     <div class="overlay">
                         <h4>Node.js API Expert</h4>
                         <p>APIs RESTful escaláveis e microserviços com Node.js</p>
@@ -331,7 +1878,7 @@
             <div class="contact-info">
                 <h3>Vamos conversar!</h3>
                 <p>Tem um projeto em mente? Entre em contacto e vamos transformar suas ideias em realidade.</p>
-                
+
                 <div class="info-items">
                     <div class="info-item">
                         <i class="fa-regular fa-envelope"></i>
@@ -340,7 +1887,7 @@
                             <a href="mailto:adolfomonteiromanuel@gmail.com">adolfomonteiromanuel@gmail.com</a>
                         </div>
                     </div>
-                    
+
                     <div class="info-item">
                         <i class="fa-regular fa-phone"></i>
                         <div>
@@ -348,7 +1895,7 @@
                             <a href="tel:+244928549260">+244 928 549 260</a>
                         </div>
                     </div>
-                    
+
                     <div class="info-item">
                         <i class="fa-regular fa-location-dot"></i>
                         <div>
@@ -358,30 +1905,6 @@
                     </div>
                 </div>
             </div>
-
-            <form action="#" class="contact-form">
-                <div class="form-group">
-                    <input type="text" placeholder="Nome Completo" required>
-                </div>
-                <div class="form-group">
-                    <input type="email" placeholder="Email" required>
-                </div>
-                <div class="form-row">
-                    <div class="form-group">
-                        <input type="tel" placeholder="Telefone">
-                    </div>
-                    <div class="form-group">
-                        <input type="text" placeholder="Assunto">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <textarea placeholder="Sua Mensagem" rows="6" required></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary btn-full">
-                    <i class="fa-regular fa-paper-plane"></i>
-                    Enviar Mensagem
-                </button>
-            </form>
         </div>
     </section>
 
@@ -392,28 +1915,33 @@
                 <a href="#" class="logo">Adolfo <span>Monteiro</span></a>
                 <p>Transformando ideias em código e criando experiências digitais extraordinárias.</p>
             </div>
-            
+
             <div class="footer-links">
                 <h4>Links Rápidos</h4>
                 <ul>
                     <li><a href="#home">Início</a></li>
                     <li><a href="#about">Sobre</a></li>
+                    <li><a href="#github">GitHub</a></li>
                     <li><a href="#services">Serviços</a></li>
                     <li><a href="#portfolio">Certificações</a></li>
                 </ul>
             </div>
-            
+
             <div class="footer-social">
                 <h4>Redes Sociais</h4>
                 <div class="social-links">
-                    <a href="#" class="social-link"><i class="fa-brands fa-github"></i></a>
-                    <a href="#" class="social-link"><i class="fa-brands fa-linkedin-in"></i></a>
-                    <a href="#" class="social-link"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="#" class="social-link"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="https://github.com/adolfodev10" target="_blank" class="social-link"><i
+                            class="fa-brands fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/adolfo-manuel-965746334/" target="_blank"
+                        class="social-link"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="https://www.instagram.com/adolfomonteiromanuel10/" target="_blank" class="social-link"><i
+                            class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/adolfo.MisterAL/" target="_blank" class="social-link"><i
+                            class="fa-brands fa-facebook-f"></i></a>
                 </div>
             </div>
         </div>
-        
+
         <div class="footer-bottom">
             <p>&copy; 2024 Adolfo Monteiro. Todos os direitos reservados.</p>
             <a href="#home" class="back-to-top">
@@ -426,6 +1954,550 @@
     <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-    <script src="JS/main.js"></script>
+
+    <script>
+        // Loader
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.querySelector('.loader').classList.add('hidden');
+            }, 1000);
+        });
+
+        // Cursor Personalizado
+        const cursor = document.querySelector('.cursor');
+        const follower = document.querySelector('.cursor-follower');
+
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+
+            follower.style.left = e.clientX + 'px';
+            follower.style.top = e.clientY + 'px';
+        });
+
+        document.addEventListener('mouseenter', () => {
+            cursor.style.opacity = '1';
+            follower.style.opacity = '1';
+        });
+
+        document.addEventListener('mouseleave', () => {
+            cursor.style.opacity = '0';
+            follower.style.opacity = '0';
+        });
+
+        // Efeito hover em links e botões
+        const hoverElements = document.querySelectorAll('a, button, .social-icon, .btn');
+
+        hoverElements.forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                cursor.style.transform = 'scale(1.5)';
+                follower.style.transform = 'scale(1.5)';
+                follower.style.borderColor = 'var(--accent-color)';
+            });
+
+            el.addEventListener('mouseleave', () => {
+                cursor.style.transform = 'scale(1)';
+                follower.style.transform = 'scale(1)';
+                follower.style.borderColor = 'var(--primary-color)';
+            });
+        });
+
+        // Menu Mobile
+        const menuIcon = document.querySelector('#menu-icon');
+        const navbar = document.querySelector('.navbar');
+
+        menuIcon.onclick = () => {
+            menuIcon.classList.toggle('fa-xmark');
+            navbar.classList.toggle('active');
+        };
+
+        // Scroll Spying
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.navbar a');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+
+                if (pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+
+            // Header scroll effect
+            const header = document.querySelector('.header');
+            header.classList.toggle('scrolled', window.scrollY > 100);
+
+            // Close mobile menu on scroll
+            if (navbar.classList.contains('active')) {
+                navbar.classList.remove('active');
+                menuIcon.classList.remove('fa-xmark');
+            }
+        });
+
+        // Typed.js
+        const typed = new Typed('.typed-text', {
+            strings: ['Web', 'Mobile', 'Full Stack', 'Software'],
+            typeSpeed: 100,
+            backSpeed: 60,
+            backDelay: 2000,
+            loop: true,
+            showCursor: false
+        });
+
+        // ScrollReveal Animations
+        ScrollReveal({
+            distance: '60px',
+            duration: 2500,
+            delay: 400,
+            reset: false
+        });
+
+        ScrollReveal().reveal('.home-content, .section-title', { origin: 'top', interval: 200 });
+        ScrollReveal().reveal('.home-img, .about-img, .service-card, .portfolio-item, .github-card', { origin: 'bottom', interval: 200 });
+        ScrollReveal().reveal('.about-content, .contact-info', { origin: 'left' });
+        ScrollReveal().reveal('.contact-form', { origin: 'right' });
+
+        // Stats Counter Animation
+        const stats = document.querySelectorAll('.stat-number');
+
+        const animateStats = () => {
+            stats.forEach(stat => {
+                const target = parseInt(stat.getAttribute('data-target'));
+                let current = 0;
+                const increment = target / 50;
+
+                const updateCount = () => {
+                    if (current < target) {
+                        current += increment;
+                        stat.textContent = Math.ceil(current) + '+';
+                        requestAnimationFrame(updateCount);
+                    } else {
+                        stat.textContent = target + '+';
+                    }
+                };
+
+                updateCount();
+            });
+        };
+
+        // Trigger stats animation when in viewport
+        const observerOptions = {
+            threshold: 0.5
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    animateStats();
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        observer.observe(document.querySelector('.stats-container'));
+
+        // GSAP Animations
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Parallax effect on home section
+        gsap.to('.home-img', {
+            scrollTrigger: {
+                trigger: '.home',
+                start: 'top top',
+                end: 'bottom top',
+                scrub: true
+            },
+            y: 100,
+            opacity: 0.5
+        });
+
+        // Floating animation for tech icons
+        gsap.to('.tech-icons i', {
+            y: -20,
+            duration: 2,
+            repeat: -1,
+            yoyo: true,
+            ease: 'power1.inOut',
+            stagger: 0.2
+        });
+
+        // Service cards animation on scroll
+        gsap.from('.service-card', {
+            scrollTrigger: {
+                trigger: '.services',
+                start: 'top 80%',
+                end: 'bottom 20%',
+                toggleActions: 'play none none reverse'
+            },
+            y: 50,
+            opacity: 0,
+            duration: 1,
+            stagger: 0.2
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('.navbar a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Toast notification function
+        function showToast(message, type = 'info') {
+            // Criar elemento toast
+            const toast = document.createElement('div');
+            toast.className = `toast toast-${type}`;
+            toast.innerHTML = `
+        <div class="toast-icon">
+            <i class="fa-regular ${type === 'success' ? 'fa-circle-check' : 'fa-envelope'}"></i>
+        </div>
+        <div class="toast-content">
+            <strong>${type === 'success' ? 'Mensagem enviada!' : 'Contato Profissional'}</strong>
+            <p>${message}</p>
+        </div>
+        <button class="toast-close">&times;</button>
+    `;
+
+            document.body.appendChild(toast);
+
+            // Animação de entrada
+            setTimeout(() => toast.classList.add('show'), 100);
+
+            // Fechar ao clicar no botão
+            toast.querySelector('.toast-close').onclick = () => {
+                toast.classList.remove('show');
+                setTimeout(() => toast.remove(), 300);
+            };
+
+            // Auto-fechar após 8 segundos
+            setTimeout(() => {
+                if (toast.parentNode) {
+                    toast.classList.remove('show');
+                    setTimeout(() => toast.remove(), 300);
+                }
+            }, 8000);
+        }
+
+        // Download CV function - versão ética
+        function Download() {
+            const telefone = '+244 928 549 260';
+            const email = 'adolfomonteiromanuel@gmail.com';
+
+            showToast(
+                `📄 Meu currículo está disponível mediante contato profissional. ` +
+                `Entre em contato pelo WhatsApp: ${telefone} ou email: ${email} ` +
+                `para que possamos conversar sobre oportunidades.`,
+                'info'
+            );
+        }
+
+        // Theme toggle
+        const createThemeToggle = () => {
+            const toggle = document.createElement('button');
+            toggle.className = 'theme-toggle';
+            toggle.innerHTML = '<i class="fa-regular fa-moon"></i>';
+            document.body.appendChild(toggle);
+
+            toggle.addEventListener('click', () => {
+                document.body.classList.toggle('dark-theme');
+                toggle.innerHTML = document.body.classList.contains('dark-theme')
+                    ? '<i class="fa-regular fa-sun"></i>'
+                    : '<i class="fa-regular fa-moon"></i>';
+            });
+        };
+
+        createThemeToggle();
+        // ============================================
+        // GITHUB API INTEGRATION - COM TOKEN
+        // ============================================
+        const GITHUB_USERNAME = 'adolfodev10';
+        const GITHUB_TOKEN = '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'; // ⚠️ COLE SEU TOKEN AQUI
+
+        // Função auxiliar para fazer requisições autenticadas
+        async function fetchWithAuth(url) {
+            const headers = {
+                'Authorization': `token ${GITHUB_TOKEN}`,
+                'Accept': 'application/vnd.github.v3+json'
+            };
+
+            const response = await fetch(url, { headers });
+
+            if (!response.ok) {
+                console.error(`Erro ${response.status}: ${response.statusText} - ${url}`);
+                return null;
+            }
+
+            return response.json();
+        }
+
+        // Buscar todos os commits de um repositório (qualquer owner)
+        async function fetchAllCommitsFromRepo(owner, repo, sinceDate) {
+            let page = 1;
+            let allCommits = [];
+            let hasMore = true;
+
+            while (hasMore) {
+                const url = `https://api.github.com/repos/${owner}/${repo}/commits?per_page=100&page=${page}&since=${sinceDate}&author=${GITHUB_USERNAME}`;
+                const data = await fetchWithAuth(url);
+
+                if (!data || data.length === 0) {
+                    hasMore = false;
+                } else {
+                    allCommits = allCommits.concat(data);
+                    page++;
+                }
+
+                // Pequeno delay para evitar rate limit
+                await new Promise(resolve => setTimeout(resolve, 100));
+            }
+
+            return allCommits;
+        }
+
+        // Buscar todos os repositórios de uma organização
+        async function fetchOrgRepos(orgName) {
+            const repos = [];
+            let page = 1;
+            let hasMore = true;
+
+            while (hasMore) {
+                const url = `https://api.github.com/orgs/${orgName}/repos?per_page=100&page=${page}&type=all`;
+                const data = await fetchWithAuth(url);
+
+                if (!data || data.length === 0) {
+                    hasMore = false;
+                } else {
+                    repos.push(...data);
+                    page++;
+                }
+            }
+
+            return repos;
+        }
+
+        async function fetchGitHubStats() {
+            try {
+                // 1. Buscar dados do usuário
+                const userData = await fetchWithAuth(`https://api.github.com/users/${GITHUB_USERNAME}`);
+                if (!userData) throw new Error('Erro ao buscar dados do usuário');
+
+                // Data de criação da conta
+                const accountCreationDate = new Date(userData.created_at);
+                const sinceDate = accountCreationDate.toISOString();
+
+                // 2. Buscar organizações que o usuário participa
+                const orgsData = await fetchWithAuth(`https://api.github.com/users/${GITHUB_USERNAME}/orgs`);
+                const organizations = orgsData || [];
+
+                organizations.forEach(org => org.login);
+
+                // 3. Buscar repositórios do usuário
+                const userRepos = await fetchWithAuth(`https://api.github.com/users/${GITHUB_USERNAME}/repos?per_page=100&sort=updated`);
+                const userReposList = userRepos || [];
+
+                let allRepos = [...userReposList];
+
+                for (const org of organizations) {
+                    const orgRepos = await fetchOrgRepos(org.login);
+
+                    // Filtrar apenas repositórios onde o usuário tem commits
+                    // (vamos verificar depois durante a busca de commits)
+                    allRepos = allRepos.concat(orgRepos.map(repo => ({
+                        ...repo,
+                        owner: org.login,
+                        isOrgRepo: true
+                    })));
+
+                }
+
+                // Remover duplicatas (caso tenha repositórios com mesmo nome em orgs diferentes)
+                const uniqueRepos = [];
+                const repoKeys = new Set();
+                for (const repo of allRepos) {
+                    const key = `${repo.owner || repo.owner?.login || GITHUB_USERNAME}/${repo.name}`;
+                    if (!repoKeys.has(key)) {
+                        repoKeys.add(key);
+                        uniqueRepos.push(repo);
+                    }
+                }
+
+
+                // 5. Calcular estatísticas
+                let totalStars = 0;
+                let totalForks = 0;
+                let totalCommits = 0;
+                const languages = {};
+                const reposWithCommits = [];
+
+                for (const repo of uniqueRepos) {
+                    const repoOwner = repo.owner?.login || repo.owner || GITHUB_USERNAME;
+                    const repoName = repo.name;
+
+                    // Somar estrelas e forks
+                    totalStars += repo.stargazers_count || 0;
+                    totalForks += repo.forks_count || 0;
+
+                    // Contar linguagens
+                    if (repo.language) {
+                        languages[repo.language] = (languages[repo.language] || 0) + 1;
+                    }
+
+                    // Buscar commits apenas se não for fork e se for relevante
+                    if (!repo.fork && repoName !== '.github') {
+                        const commits = await fetchAllCommitsFromRepo(repoOwner, repoName, sinceDate);
+                        const commitCount = commits.length;
+
+                        if (commitCount > 0) {
+                            totalCommits += commitCount;
+                            reposWithCommits.push({ repo: `${repoOwner}/${repoName}`, commits: commitCount });
+                        }
+                    }
+                }
+
+
+                // 6. Buscar issues e PRs
+                const issuesData = await fetchWithAuth(`https://api.github.com/search/issues?q=author:${GITHUB_USERNAME}+type:issue`);
+                const prsData = await fetchWithAuth(`https://api.github.com/search/issues?q=author:${GITHUB_USERNAME}+type:pr`);
+                const openIssuesData = await fetchWithAuth(`https://api.github.com/search/issues?q=author:${GITHUB_USERNAME}+type:issue+state:open`);
+                const openPrsData = await fetchWithAuth(`https://api.github.com/search/issues?q=author:${GITHUB_USERNAME}+type:pr+state:open`);
+
+                // 7. Total de contribuições
+                const totalContributions = totalCommits + (issuesData?.total_count || 0) + (prsData?.total_count || 0);
+
+                // 8. Calcular dias desde criação
+                const daysSinceCreation = Math.floor((new Date() - accountCreationDate) / (1000 * 60 * 60 * 24));
+                const avgCommitsPerDay = daysSinceCreation > 0 ? (totalCommits / daysSinceCreation).toFixed(1) : 0;
+
+                // 9. Top linguagens
+                const topLanguages = Object.entries(languages)
+                    .sort((a, b) => b[1] - a[1])
+                    .slice(0, 6);
+
+                // 10. Atualizar DOM
+                document.getElementById('total-commits').innerText = totalCommits.toLocaleString();
+                document.getElementById('total-repos').innerText = uniqueRepos.length;
+                document.getElementById('total-stars').innerText = totalStars.toLocaleString();
+                document.getElementById('total-followers').innerText = userData.followers || 0;
+                document.getElementById('total-forks').innerHTML = `<i class="fa-solid fa-code-fork"></i> ${totalForks} forks`;
+                document.getElementById('total-following').innerHTML = `<i class="fa-solid fa-user-plus"></i> seguindo ${userData.following || 0}`;
+                document.getElementById('total-contributions').innerText = totalContributions.toLocaleString();
+                document.getElementById('total-issues').innerText = openIssuesData?.total_count || 0;
+                document.getElementById('total-prs').innerText = openPrsData?.total_count || 0;
+
+                // 11. Estatísticas extras
+                const extraStats = document.getElementById('extra-stats');
+                if (extraStats) {
+                    extraStats.innerHTML = `
+                <div class="activity-item">
+                    <div class="activity-number">${daysSinceCreation}</div>
+                    <div>Dias desde criação</div>
+                </div>
+                <div class="activity-item">
+                    <div class="activity-number">${avgCommitsPerDay}</div>
+                    <div>Commits/dia (média)</div>
+                </div>
+                <div class="activity-item">
+                    <div class="activity-number">${issuesData?.total_count || 0}</div>
+                    <div>Total Issues criadas</div>
+                </div>
+                <div class="activity-item">
+                    <div class="activity-number">${prsData?.total_count || 0}</div>
+                    <div>Total PRs criadas</div>
+                </div>
+            `;
+                }
+
+                // 12. Organizações participantes
+                const orgsContainer = document.getElementById('organizations-list');
+                if (orgsContainer && organizations.length > 0) {
+                    orgsContainer.innerHTML = organizations.map(org => `
+                <a href="${org.html_url}" target="_blank" class="org-badge">
+                    <img src="${org.avatar_url}" width="30" height="30" style="border-radius: 50%;">
+                    <span>${org.login}</span>
+                </a>
+            `).join('');
+                }
+
+                // 13. Atualizar linguagens
+                const languagesContainer = document.getElementById('top-languages');
+                if (topLanguages.length > 0) {
+                    languagesContainer.innerHTML = topLanguages.map(([lang, count]) =>
+                        `<span class="lang-tag">${lang} (${count} repo${count > 1 ? 's' : ''})</span>`
+                    ).join('');
+                } else {
+                    languagesContainer.innerHTML = '<span class="lang-tag">Nenhuma linguagem detectada</span>';
+                }
+
+                // 14. Atualizar trends
+                const commitsTrend = document.getElementById('commits-trend');
+                // commitsTrend.innerHTML = `<i class="fa-solid fa-chart-line"></i> Desde ${accountCreationDate.toLocaleDateString('pt-BR')} - Média de ${avgCommitsPerDay} commits/dia`;
+
+                const starsTrend = document.getElementById('stars-trend');
+                if (totalStars > 0) {
+                    starsTrend.innerHTML = `<i class="fa-solid fa-trophy"></i> ${totalStars} estrelas em ${uniqueRepos.length} repositórios`;
+                } else {
+                    starsTrend.innerHTML = `<i class="fa-solid fa-star"></i> Comece a dar estrelas nos seus projetos!`;
+                }
+
+                // 15. Info da conta
+                const accountInfo = document.getElementById('account-info');
+                if (accountInfo) {
+                    accountInfo.innerHTML = `
+                <div class="github-activity" style="margin-top: 2rem;">
+                    <h3><i class="fa-solid fa-calendar-alt"></i> Desde ${accountCreationDate.toLocaleDateString('pt-BR')}</h3>
+                    <div class="activity-stats">
+                        <div class="activity-item">
+                            <div class="activity-number">${totalCommits.toLocaleString()}</div>
+                            <div>Commits totais</div>
+                        </div>
+                        <div class="activity-item">
+                            <div class="activity-number">${uniqueRepos.length}</div>
+                            <div>Repositórios</div>
+                        </div>
+                    </div>
+                </div>
+            `;
+                }
+
+            } catch (error) {
+                console.error('Erro ao buscar dados do GitHub:', error);
+                // Dados de fallback
+                document.getElementById('total-commits').innerText = 'N/A';
+                document.getElementById('total-repos').innerText = '16';
+                document.getElementById('total-stars').innerText = '0';
+                document.getElementById('total-followers').innerText = '6';
+                document.getElementById('total-forks').innerHTML = '<i class="fa-solid fa-code-fork"></i> 0 forks';
+                document.getElementById('total-following').innerHTML = '<i class="fa-solid fa-user-plus"></i> seguindo 11';
+                document.getElementById('total-contributions').innerText = 'N/A';
+                document.getElementById('total-issues').innerText = '0';
+                document.getElementById('total-prs').innerText = '0';
+
+                const languagesContainer = document.getElementById('top-languages');
+                languagesContainer.innerHTML = '<span class="lang-tag">JavaScript</span><span class="lang-tag">TypeScript</span><span class="lang-tag">Python</span>';
+            }
+        }
+
+        // Executar busca dos dados do GitHub
+        fetchGitHubStats();
+    </script>
 </body>
+
 </html>
